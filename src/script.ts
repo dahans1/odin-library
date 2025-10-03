@@ -36,10 +36,21 @@ function displayBooks() {
         const title = document.createElement('span');
         title.textContent = book.title;
         title.classList.add('book-title');
-
-        card.classList.add('card');
         card.appendChild(title);
 
+        const authorPages = document.createElement('div');
+        const author = document.createElement('span');
+        const pages = document.createElement('span');
+        authorPages.classList.add('authorPages');
+        
+        author.textContent = 'By: ' + book.author;
+        pages.textContent = book.pages + ' pages';
+        authorPages.appendChild(author);
+        authorPages.appendChild(pages);
+        
+        card.appendChild(authorPages);
+
+        card.classList.add('card');
         container?.appendChild(card);
     });
 }

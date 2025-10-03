@@ -25,8 +25,17 @@ function displayBooks() {
         var title = document.createElement('span');
         title.textContent = book.title;
         title.classList.add('book-title');
-        card.classList.add('card');
         card.appendChild(title);
+        var authorPages = document.createElement('div');
+        var author = document.createElement('span');
+        var pages = document.createElement('span');
+        authorPages.classList.add('authorPages');
+        author.textContent = 'By: ' + book.author;
+        pages.textContent = book.pages + ' pages';
+        authorPages.appendChild(author);
+        authorPages.appendChild(pages);
+        card.appendChild(authorPages);
+        card.classList.add('card');
         container === null || container === void 0 ? void 0 : container.appendChild(card);
     });
 }
