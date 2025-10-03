@@ -19,8 +19,15 @@ addBookToLibrary('1984', 'George Orwell', 352, true);
 addBookToLibrary('A Clockwork Orange', 'Anthony Burgess', 176, true);
 addBookToLibrary('Moby Dick', 'Herman Melville', 720, false);
 function displayBooks() {
+    var container = document.querySelector('.container');
     myLibrary.forEach(function (book) {
-        console.log(book.title);
+        var card = document.createElement('div');
+        var title = document.createElement('span');
+        title.textContent = book.title;
+        title.classList.add('book-title');
+        card.classList.add('card');
+        card.appendChild(title);
+        container === null || container === void 0 ? void 0 : container.appendChild(card);
     });
 }
 displayBooks();

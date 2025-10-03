@@ -28,8 +28,19 @@ addBookToLibrary('A Clockwork Orange', 'Anthony Burgess', 176, true);
 addBookToLibrary('Moby Dick', 'Herman Melville', 720, false);
 
 function displayBooks() {
+    const container = document.querySelector('.container');
+    
     myLibrary.forEach(book => {
-        console.log(book.title);
+        const card = document.createElement('div');
+        
+        const title = document.createElement('span');
+        title.textContent = book.title;
+        title.classList.add('book-title');
+
+        card.classList.add('card');
+        card.appendChild(title);
+
+        container?.appendChild(card);
     });
 }
 
