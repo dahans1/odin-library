@@ -1,36 +1,26 @@
-class Book {
-    id: string;
-    title: string;
-    author: string;
-    pages: number;
-    read: boolean;
-
-    constructor(title: string, author: string, pages: number, read: boolean) {
+var Book = /** @class */ (function () {
+    function Book(title, author, pages, read) {
         this.id = crypto.randomUUID();
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
     }
-}
-
-const myLibrary: Book[] = [];
-
-function addBookToLibrary(title: string, author: string, pages: number, read: boolean) {
-    const book = new Book(title, author, pages, read);
+    return Book;
+}());
+var myLibrary = [];
+function addBookToLibrary(title, author, pages, read) {
+    var book = new Book(title, author, pages, read);
     myLibrary.push(book);
 }
-
 addBookToLibrary('Dune', 'Frank Herbert', 704, true);
 addBookToLibrary('Dune: Messiah', 'Frank Herbert', 256, false);
 addBookToLibrary('1984', 'George Orwell', 352, true);
 addBookToLibrary('A Clockwork Orange', 'Anthony Burgess', 176, true);
 addBookToLibrary('Moby Dick', 'Herman Melville', 720, false);
-
 function displayBooks() {
-    myLibrary.forEach(book => {
+    myLibrary.forEach(function (book) {
         console.log(book.title);
     });
 }
-
 displayBooks();
