@@ -10,6 +10,9 @@ var Book = /** @class */ (function () {
         this.pages = pages;
         this.read = read;
     }
+    Book.prototype.toggleRead = function () {
+        this.read = !this.read;
+    };
     return Book;
 }());
 var myLibrary = [];
@@ -47,19 +50,31 @@ function displayBooks() {
         bottomContainer.appendChild(authorPages);
         var readButton = document.createElement('button');
         readButton.type = 'button';
+        readButton.classList.add('read-button');
+        updateReadButton(readButton, book.read);
+        readButton.addEventListener('click', function () {
+            book.toggleRead();
+            updateReadButton(readButton, book.read);
+        });
         readButton.style.color = 'white';
         if (book.read) {
-            readButton.textContent = 'Marked read';
-            readButton.style.backgroundColor = 'green';
         }
         else {
-            readButton.textContent = 'Marked unread';
-            readButton.style.backgroundColor = 'red';
         }
         bottomContainer.appendChild(readButton);
         card.appendChild(bottomContainer);
         container === null || container === void 0 ? void 0 : container.appendChild(card);
     });
+}
+function updateReadButton(button, read) {
+    if (read) {
+        button.textContent = 'Marked read';
+        button.style.backgroundColor = 'green';
+    }
+    else {
+        button.textContent = 'Marked unread';
+        button.style.backgroundColor = 'red';
+    }
 }
 displayBooks();
 function showForm() {

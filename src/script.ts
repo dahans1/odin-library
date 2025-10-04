@@ -18,6 +18,10 @@ class Book {
         this.pages = pages;
         this.read = read;
     }
+
+    toggleRead() {
+        this.read = !this.read;
+    }
 }
 
 const myLibrary: Book[] = [];
@@ -63,13 +67,19 @@ function displayBooks() {
 
         const readButton = document.createElement('button');
         readButton.type = 'button';
+        readButton.classList.add('read-button');
+        updateReadButton(readButton, book.read);
+
+        readButton.addEventListener('click', () => {
+            book.toggleRead();
+            updateReadButton(readButton, book.read);
+        });
+
         readButton.style.color = 'white';
         if (book.read) {
-            readButton.textContent = 'Marked read';
-            readButton.style.backgroundColor = 'green';
+            
         } else {
-            readButton.textContent = 'Marked unread';
-            readButton.style.backgroundColor = 'red';
+            
         }
         bottomContainer.appendChild(readButton);
         
@@ -78,6 +88,16 @@ function displayBooks() {
         container?.appendChild(card);
     });
 }
+
+function updateReadButton(button: HTMLButtonElement, read: boolean) {
+    if (read) {
+        button.textContent = 'Marked read';
+        button.style.backgroundColor = 'green';
+    } else {
+        button.textContent = 'Marked unread';
+        button.style.backgroundColor = 'red';
+    }
+} 
 
 displayBooks();
 
