@@ -1,3 +1,9 @@
+const addBookButton = document.querySelector('#add-book-button');
+const formPopup = document.querySelector('#form-popup');
+const closeButtton = document.querySelector('#close-form');
+const bookForm = document.querySelector('#book-form') as HTMLFormElement;
+
+
 class Book {
     id: string;
     title: string;
@@ -29,6 +35,8 @@ addBookToLibrary('Moby Dick', 'Herman Melville', 720, false);
 
 function displayBooks() {
     const container = document.querySelector('.container');
+    if (!container) return;
+    container.innerHTML = '';
     
     myLibrary.forEach(book => {
         const card = document.createElement('div');
@@ -72,3 +80,38 @@ function displayBooks() {
 }
 
 displayBooks();
+
+function showForm() {
+    formPopup?.classList.add('active');
+}
+
+function hideForm() {
+    formPopup?.classList.remove('active');
+}
+
+addBookButton?.addEventListener('click', () => {
+    showForm();
+});
+
+closeButtton?.addEventListener('click', () => {
+    hideForm();
+});
+
+// submit form
+bookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(bookForm);
+    const title = formData.get('title') as string;
+    const author = formData.get('author') as string;
+    const pages = parseInt(formData.get('pages') as string);
+
+    console.log(formData.get('read'));
+    const read = formData.get('read') === 'on';
+
+    addBookToLibrary(title, author, pages, read);
+    displayBooks();
+
+    bookForm.reset();
+    hideForm();
+});

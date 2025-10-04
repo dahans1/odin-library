@@ -1,3 +1,7 @@
+var addBookButton = document.querySelector('#add-book-button');
+var formPopup = document.querySelector('#form-popup');
+var closeButtton = document.querySelector('#close-form');
+var bookForm = document.querySelector('#book-form');
 var Book = /** @class */ (function () {
     function Book(title, author, pages, read) {
         this.id = crypto.randomUUID();
@@ -20,6 +24,9 @@ addBookToLibrary('A Clockwork Orange', 'Anthony Burgess', 176, true);
 addBookToLibrary('Moby Dick', 'Herman Melville', 720, false);
 function displayBooks() {
     var container = document.querySelector('.container');
+    if (!container)
+        return;
+    container.innerHTML = '';
     myLibrary.forEach(function (book) {
         var card = document.createElement('div');
         card.classList.add('card');
@@ -55,3 +62,29 @@ function displayBooks() {
     });
 }
 displayBooks();
+function showForm() {
+    formPopup === null || formPopup === void 0 ? void 0 : formPopup.classList.add('active');
+}
+function hideForm() {
+    formPopup === null || formPopup === void 0 ? void 0 : formPopup.classList.remove('active');
+}
+addBookButton === null || addBookButton === void 0 ? void 0 : addBookButton.addEventListener('click', function () {
+    showForm();
+});
+closeButtton === null || closeButtton === void 0 ? void 0 : closeButtton.addEventListener('click', function () {
+    hideForm();
+});
+// submit form
+bookForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var formData = new FormData(bookForm);
+    var title = formData.get('title');
+    var author = formData.get('author');
+    var pages = parseInt(formData.get('pages'));
+    console.log(formData.get('read'));
+    var read = formData.get('read') === 'on';
+    addBookToLibrary(title, author, pages, read);
+    displayBooks();
+    bookForm.reset();
+    hideForm();
+});

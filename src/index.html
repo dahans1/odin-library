@@ -8,7 +8,34 @@
 </head>
 <body>
     <div class="container"></div>
-    <button type="button" class="add-book-button">New Book</button>
+    <button type="button" id="add-book-button">New Book</button>
+    <div class="popup" id="form-popup">
+        <div class="popup-content">
+            <button class="close-button" id="close-form">&times;</button>
+            <h2>Add New Book</h2>
+            <form id="book-form">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author:</label>
+                    <input type="text" id="author" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="pages">No. of pages:</label>
+                    <input type="number" id="pages" name="pages" min="1" required>
+                </div>
+                <div class="form-group checkbox-group">
+                    <label for="read">
+                        <input type="checkbox" id="read" name="read">
+                        Already read?
+                    </label>
+                </div>
+                <button type="submit" class="submit-button">Add Book</button>
+            </form>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
 </html>
