@@ -50,18 +50,24 @@ function displayBooks() {
         bottomContainer.appendChild(authorPages);
         var readButton = document.createElement('button');
         readButton.type = 'button';
-        readButton.classList.add('read-button');
+        readButton.classList.add('book-button');
         updateReadButton(readButton, book.read);
         readButton.addEventListener('click', function () {
             book.toggleRead();
             updateReadButton(readButton, book.read);
         });
-        readButton.style.color = 'white';
-        if (book.read) {
-        }
-        else {
-        }
-        bottomContainer.appendChild(readButton);
+        var removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('book-button');
+        removeButton.textContent = 'Delete Book';
+        removeButton.addEventListener('click', function () {
+            alert('Deleting book!...JK!');
+        });
+        var bookButtonsContainer = document.createElement('div');
+        bookButtonsContainer.classList.add('book-buttons-container');
+        bookButtonsContainer.appendChild(readButton);
+        bookButtonsContainer.appendChild(removeButton);
+        bottomContainer.appendChild(bookButtonsContainer);
         card.appendChild(bottomContainer);
         container === null || container === void 0 ? void 0 : container.appendChild(card);
     });

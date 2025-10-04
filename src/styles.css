@@ -64,6 +64,10 @@ body {
     }
 
     .bottomContainer {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 10px;
+        flex-direction: column;
         opacity: 0;
     }
 
@@ -193,4 +197,18 @@ body {
 
 .popup.active {
     display: flex;
+}
+
+.book-button {
+    color: white;
+    background-color: red;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.book-button:hover {
+    color: black;
+    transition: 0.5s;
 }

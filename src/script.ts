@@ -67,21 +67,28 @@ function displayBooks() {
 
         const readButton = document.createElement('button');
         readButton.type = 'button';
-        readButton.classList.add('read-button');
-        updateReadButton(readButton, book.read);
+        readButton.classList.add('book-button');
+        updateReadButton(readButton, book.read);        
 
         readButton.addEventListener('click', () => {
             book.toggleRead();
             updateReadButton(readButton, book.read);
         });
 
-        readButton.style.color = 'white';
-        if (book.read) {
-            
-        } else {
-            
-        }
-        bottomContainer.appendChild(readButton);
+        const removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.classList.add('book-button');
+        removeButton.textContent = 'Delete Book';
+
+        removeButton.addEventListener('click', () => {
+            alert('Deleting book!...JK!');
+        });
+
+        const bookButtonsContainer = document.createElement('div');
+        bookButtonsContainer.classList.add('book-buttons-container');
+        bookButtonsContainer.appendChild(readButton);
+        bookButtonsContainer.appendChild(removeButton);
+        bottomContainer.appendChild(bookButtonsContainer);
         
         card.appendChild(bottomContainer);
 
