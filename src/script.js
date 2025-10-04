@@ -22,10 +22,13 @@ function displayBooks() {
     var container = document.querySelector('.container');
     myLibrary.forEach(function (book) {
         var card = document.createElement('div');
+        card.classList.add('card');
         var title = document.createElement('span');
         title.textContent = book.title;
         title.classList.add('book-title');
         card.appendChild(title);
+        var bottomContainer = document.createElement('div');
+        bottomContainer.classList.add('bottomContainer');
         var authorPages = document.createElement('div');
         var author = document.createElement('span');
         var pages = document.createElement('span');
@@ -34,8 +37,20 @@ function displayBooks() {
         pages.textContent = book.pages + ' pages';
         authorPages.appendChild(author);
         authorPages.appendChild(pages);
-        card.appendChild(authorPages);
-        card.classList.add('card');
+        bottomContainer.appendChild(authorPages);
+        var readButton = document.createElement('button');
+        readButton.type = 'button';
+        readButton.style.color = 'white';
+        if (book.read) {
+            readButton.textContent = 'Marked read';
+            readButton.style.backgroundColor = 'green';
+        }
+        else {
+            readButton.textContent = 'Marked unread';
+            readButton.style.backgroundColor = 'red';
+        }
+        bottomContainer.appendChild(readButton);
+        card.appendChild(bottomContainer);
         container === null || container === void 0 ? void 0 : container.appendChild(card);
     });
 }

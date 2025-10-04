@@ -59,10 +59,14 @@ body {
         text-shadow: 2px 2px 4px #888888;
     }
 
+    .bottomContainer {
+        opacity: 0;
+    }
+
     .authorPages {
         display: flex;
         flex-direction: column;
-
+        
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
         font-size: 0.85rem;
     }
@@ -73,4 +77,9 @@ body {
 .card:hover {
     background-color: color-mix(in srgb, #895129 50%, burlywood);
     transition: 0.5s;
+
+    .bottomContainer {
+        opacity: 1;
+        transition: opacity 1.5s ease;
+    }
 }

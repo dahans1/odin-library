@@ -32,11 +32,15 @@ function displayBooks() {
     
     myLibrary.forEach(book => {
         const card = document.createElement('div');
+        card.classList.add('card');
         
         const title = document.createElement('span');
         title.textContent = book.title;
         title.classList.add('book-title');
         card.appendChild(title);
+
+        const bottomContainer = document.createElement('div');
+        bottomContainer.classList.add('bottomContainer');
 
         const authorPages = document.createElement('div');
         const author = document.createElement('span');
@@ -47,10 +51,22 @@ function displayBooks() {
         pages.textContent = book.pages + ' pages';
         authorPages.appendChild(author);
         authorPages.appendChild(pages);
-        
-        card.appendChild(authorPages);
+        bottomContainer.appendChild(authorPages);
 
-        card.classList.add('card');
+        const readButton = document.createElement('button');
+        readButton.type = 'button';
+        readButton.style.color = 'white';
+        if (book.read) {
+            readButton.textContent = 'Marked read';
+            readButton.style.backgroundColor = 'green';
+        } else {
+            readButton.textContent = 'Marked unread';
+            readButton.style.backgroundColor = 'red';
+        }
+        bottomContainer.appendChild(readButton);
+        
+        card.appendChild(bottomContainer);
+
         container?.appendChild(card);
     });
 }
