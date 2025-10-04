@@ -61,7 +61,8 @@ function displayBooks() {
         removeButton.classList.add('book-button');
         removeButton.textContent = 'Delete Book';
         removeButton.addEventListener('click', function () {
-            alert('Deleting book!...JK!');
+            removeBook(book.id);
+            displayBooks();
         });
         var bookButtonsContainer = document.createElement('div');
         bookButtonsContainer.classList.add('book-buttons-container');
@@ -83,6 +84,9 @@ function updateReadButton(button, read) {
     }
 }
 displayBooks();
+function removeBook(id) {
+    myLibrary = myLibrary.filter(function (book) { return book.id !== id; });
+}
 function showForm() {
     formPopup === null || formPopup === void 0 ? void 0 : formPopup.classList.add('active');
 }

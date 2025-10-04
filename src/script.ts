@@ -24,7 +24,7 @@ class Book {
     }
 }
 
-const myLibrary: Book[] = [];
+let myLibrary: Book[] = [];
 
 function addBookToLibrary(title: string, author: string, pages: number, read: boolean) {
     const book = new Book(title, author, pages, read);
@@ -81,7 +81,8 @@ function displayBooks() {
         removeButton.textContent = 'Delete Book';
 
         removeButton.addEventListener('click', () => {
-            alert('Deleting book!...JK!');
+            removeBook(book.id);
+            displayBooks();
         });
 
         const bookButtonsContainer = document.createElement('div');
@@ -107,6 +108,10 @@ function updateReadButton(button: HTMLButtonElement, read: boolean) {
 } 
 
 displayBooks();
+
+function removeBook(id: string) {
+    myLibrary = myLibrary.filter(book => book.id !== id);
+}
 
 function showForm() {
     formPopup?.classList.add('active');
