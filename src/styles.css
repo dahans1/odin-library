@@ -197,6 +197,10 @@ body {
 
 .popup.active {
     display: flex;
+
+    .popup-content {
+        background: linear-gradient(90deg, rgba(246, 161, 146, 1) 0%, rgba(246, 196, 146, 1) 50%, rgba(246, 217, 146, 1) 100%);
+    }
 }
 
 .book-button {
